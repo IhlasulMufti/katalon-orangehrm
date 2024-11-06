@@ -17,21 +17,17 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.openBrowser('')
+WebUI.click(findTestObject('Page_OrangeHRM/p_Profile name'))
 
-WebUI.maximizeWindow()
+WebUI.click(findTestObject('Page_OrangeHRM/a_Logout'))
 
-WebUI.navigateToUrl('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+WebUI.setText(findTestObject('Object Repository/Page_OrangeHRM/input_Username_username'), 'invalid')
 
-WebUI.setText(findTestObject('Object Repository/Page_OrangeHRM/input_Username_username'), 'Admin')
-
-WebUI.setEncryptedText(findTestObject('Object Repository/Page_OrangeHRM/input_Password_password'), 'hUKwJTbofgPU9eVlw/CnDQ==')
+WebUI.setEncryptedText(findTestObject('Object Repository/Page_OrangeHRM/input_Password_password'), '9nJBMkew2Wc=')
 
 WebUI.click(findTestObject('Object Repository/Page_OrangeHRM/button_Login'))
 
-getTextDashboard = WebUI.getText(findTestObject('Object Repository/Page_OrangeHRM/h6_Dashboard'))
+WebUI.verifyElementText(findTestObject('Page_OrangeHRM/txt_Invalid'), 'Invalid credential')
 
-println('Tampilkan ke console = ' + getTextDashboard)
-
-WebUI.verifyElementText(findTestObject('Object Repository/Page_OrangeHRM/h6_Dashboard'), 'Dashboard')
+WebUI.closeBrowser()
 
